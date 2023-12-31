@@ -1,8 +1,16 @@
-# React + Vite
+# React - Get Fake Person details
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+All the steps and tools that I have used in this project:
+- React-Router
+- ContextApi
+- Module CSS
+- Bootstrap
+- Responsive
+- Axios
+- UnPlash Photo api
+- Custom Pagination
+- Custom Modal
+- LeaftLetJs Map
+- Firebase Auth & RealTime DB
+- Browser Api ( Location,Camera )
+- IpInfo 
