@@ -23,8 +23,7 @@ const reduceing = (state,{form,target,acType}) => {
     function SubmitData() {
 
 
-        const {name,email,subj,message} = state
-        const{SendMailNow} = SendMail
+        const {name,email,subj,message} = state 
 
         const AddRemClasses = () => {
             Object.keys(state).forEach((item) => { 
@@ -44,7 +43,7 @@ const reduceing = (state,{form,target,acType}) => {
             setTimeout(() => {
                 alert.classList.add('d-none')
             }, 1000);
-            SendMailNow(state)
+            SendMail(state)
             return {name:'',email:'',subj:'',message:''}
         }
     }
