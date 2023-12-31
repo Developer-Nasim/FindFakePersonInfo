@@ -1,4 +1,4 @@
-import {Children, lazy, Suspense} from 'react'
+import {lazy, Suspense} from 'react'
 import PageLayout from './components/Singlecomponents/PageLayout.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
@@ -6,18 +6,7 @@ import './global.css'
 import { Navigate, Outlet, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 import { useAuth } from './Contexts/AuthContext.jsx';
-
-// import Home from './pages/Home.jsx';
-// import About from './pages/About.jsx';
-// import Howto from './pages/Howto.jsx';
-// import Contactus from './pages/Contactus.jsx';
-// import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
-// import TermsOfServices from './pages/TermsOfServices.jsx';
-// import Profile from './pages/dashboard/Profile.jsx';
-// import LinkDetails from './pages/dashboard/LinkDetails.jsx';
-// import Auth from './pages/Auth.jsx';
-// import PreivewTarget from './components/PreivewTarget/index.jsx'; 
-// import NotFound from './pages/NotFound.jsx'; 
+ 
 
 import Preloader from './components/Preloader/index.jsx';
 

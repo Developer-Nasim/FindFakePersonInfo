@@ -10,7 +10,7 @@ export default function useFetchDetails(key,dbname,uid) {
                 const db = getDatabase()
                 const dbRef = ref(db,`${dbname}/${uid}/${key}`)
                 const snapshot = await get(dbRef)
-                setData(snapshot.val())
+                setData(snapshot.val()) 
             } catch (error) {
                 console.log(error)
             }

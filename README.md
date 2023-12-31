@@ -3,6 +3,8 @@
 All the steps and tools that I have used in this project:
 - React-Router
 - ContextApi
+- Lazy
+- Suspense
 - Module CSS
 - Bootstrap
 - Responsive

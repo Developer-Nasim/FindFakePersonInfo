@@ -73,7 +73,7 @@ export default function CreateModal({closeHandle}) {
                     "title":text.title,
                     'img':imgurl,
                     'created_at':  `${Date.now()}`,
-                    'created_url': `/yours/?${newPostRef.key}`
+                    'created_url': `/yours/?${newPostRef.key}#${uid}`
                 } 
 
                 await set(newPostRef,{

