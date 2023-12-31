@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+/* 
+font-family: 'Raleway', sans-serif;
+font-family: 'Space Grotesk', sans-serif;
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+#root{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+:root{
+    --bodyfont: 'Raleway', sans-serif;
+    --headingfont: 'Space Grotesk', sans-serif;
+    --fontcolor:#222222;
+    --softdark:#333;
+    --whcolor:#fff;
+    --themeColor: #FF0000;
+    --redOverlay: rgba(108, 0, 0, 74%);
+    --themeBg: #FFD0D0; 
+    --gray: rgba(217,217,217,29%);
+    --grayBgINSoftRed: #f1f1f1;
+    --blkcolor: #000;
+    --grncolor: #40DD46;
+}
+body{
+    font-size: 16px;
+    font-weight: 400;
+    color:  var(--fontcolor);
+    line-height: 20px;
+    font-family: var(--bodyfont);
+}
+
+img{
+    max-width: 100%;
+}
+a{
+    text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: var(--headingfont);
+    font-weight: 700;
+    font-style: normal;
+}
+li{
+    list-style: none;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0; 
+    padding-left: 0;
+}
+main{
+    margin: 50px 0;
+}
+.container{
+    max-width: 1024px;
+}
+.iframe_100x500{
+    display: block;
+    width: 100%;
+    height: 500px;
+} 
+input {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.page-link:focus{
+    box-shadow: none;
+}
+input.empty,.empty{
+    border: 1px solid var(--themeColor) !important;
+}
+.copied{
+    background-color: var(--grncolor);
+}
+.disabled{
+    opacity: .5;
+    pointer-events: none;
+}
+section.password-section .aside ul li a.activeForProfile,
+section.profile-section .aside ul li a.activeForProfile{
+    background: var(--whcolor);
+}
+.pagination{
+    width: max-content;
+    margin: 15px auto;
+}
+.active>.page-link, .page-link.active{
+    background-color: var(--themeColor);
+    border-color: var(--themeColor);
+}
+.page-link{
+    color: var(--themeColor);
+}
+
+.leaflet-container{
+    border-radius: 0 !important;
+    height: 350px !important;
+}
+@media screen and (max-width:768px) {
+    input { 
+        padding: 10px; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  /* 
+  
+  LeafLet Map css
+  height of the container 
+  
+  */
+  .leaflet-container {
+    height: 500px;
+    width: 100%;
+    border-radius: 2rem;
+  }
+  
+  .cluster-icon {
+    background-color: #333;
+    height: 100px;
+    width: 100px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0px 5px #fff;
+  }
+  

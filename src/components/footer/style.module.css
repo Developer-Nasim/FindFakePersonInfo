@@ -1,0 +1,54 @@
+footer {
+    background: var(--gray);
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+footer p.copywrite {
+    margin: 0;
+    font-weight: 500;
+}
+
+ul.flinks {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+ul.flinks a {
+    text-decoration: none;
+    color: var(--fontcolor);
+    margin-left: 20px;
+    font-size: .8rem;
+    opacity: .8;
+}
+
+ul.flinks a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width:768px) {
+    
+footer p.copywrite,ul.flinks {
+    text-align: center;
+    justify-content: center;
+} 
+ul.flinks a { 
+    margin-left: 10px; 
+}
+
+
+
+
+
+
+
+
+}
+
+

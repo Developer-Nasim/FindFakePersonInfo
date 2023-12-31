@@ -1,0 +1,102 @@
+.how_to_steps {
+    text-align: center;
+    margin-top: 50px;
+}
+.steps{
+    /* background: green; */
+    margin: auto; 
+    margin-top: 50px;
+    position: relative;
+} 
+.steps::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    width: 1px;
+    height: 100%;
+    background: var(--blkcolor);
+}
+.step{ 
+    width: 545px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    text-align: right;
+    background: var(--gray);
+    border-radius: 50px;
+    padding-left: 10px;
+    margin-top: 30px;
+} 
+.step span{
+    margin-left: 20px;
+}
+.step.rightMode span{
+    margin-right: 20px;
+    margin-left: 0;
+}
+.step span{
+    min-width: 90px;
+    max-width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    background: var(--blkcolor);
+    justify-content: center;
+    color: var(--whcolor);
+    font-weight: 600;
+    font-size: 2rem;
+}
+.rightMode{ 
+    margin-left: auto;
+    text-align: left;
+    flex-direction: unset;
+    padding-left: 0px;
+    padding-right: 10px;
+} 
+.how_to_wrps > a{
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    width: max-content;
+}
+
+
+
+
+
+/* Play Button animation */
+.playBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    max-width: 75px;
+    transition: .3s;
+    animation: PlayBtnAnim 3s infinite;
+}
+@keyframes PlayBtnAnim {
+    0%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+} 
+
+
+@media screen and (max-width:991px) {
+    .steps::after{
+        display: none;
+    }
+}
+@media screen and (max-width:768px) {
+    .step{
+        width: 100%;
+    }
+    .iframe { 
+        height: 300px;
+    }
+}

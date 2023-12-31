@@ -1,0 +1,57 @@
+.AllLinks {
+    border-radius: 10px;
+    background: #f2d1d1;
+    padding-bottom: 1px;
+}
+
+.AllLinks > h4 {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 2px solid red;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.linkLists {
+    display: block;
+}
+
+.linkList {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid red;
+    align-items: center;
+    justify-content: space-between;
+}  
+.linkList > div {
+    padding-right: 20px;
+}
+
+.linkList > div h5 {
+    margin-bottom: 3px;
+}
+
+.linkList > div span {
+    display: block;
+    margin-top: 3px;
+    font-weight: 600;
+    font-size: 90%;
+}
+
+.linkList > div i {
+    display: block;
+}
+
+
+@media screen and (max-width:768px) {
+    .linkList > div {
+        padding: 0;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+    
+    .linkList {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

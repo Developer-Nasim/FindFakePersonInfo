@@ -1,0 +1,150 @@
+.createNewLink {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: var(--themeBg);
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+} 
+.create_link_now {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #ffffffdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lc_contents {
+    width: 777px;
+    max-width: 90%;
+    background: var(--themeBg);
+    border-radius: 10px;
+    padding: 30px;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    padding-top: 70px;
+}
+
+.lc_contents > span {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--themeColor);
+    color: var(--whcolor);
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+.interestingImgs {
+    margin-top: 20px;
+}
+.interestingImgs > h5{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.interestingImgs > h5 input {
+    display: block;
+    max-width: 200px; 
+    padding: 10px;
+    text-align: center; 
+    font-size: 1rem;
+}
+
+.all_imgs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); 
+    grid-gap: .3rem;
+    grid-auto-flow: dense;
+}
+
+.interestingImgs > button {
+    margin: auto;
+    display: block;
+    margin-top: 40px;
+}
+.all_imgs img{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.all_imgs .selected{
+    border: 3px solid red;
+}
+.big{
+    grid-column: auto/span 2;
+    grid-row: auto/span 2;
+}
+.long{
+    grid-column: auto/span 2;
+}
+
+
+
+
+.created_link_now_copy {
+    display: block;
+    max-width: 300px;
+    margin: auto;
+    background: var(--grayBgINSoftRed);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.created_link_now_copy > img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.created_link_now_copy > div {
+    padding: 15px;
+}
+
+.created_link_now_copy > div h5 {
+    display: block;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.created_link_now_copy > div i {
+    display: block;
+}
+
+.created_link_now_copy > div button {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+@media screen and (max-width:768px) {
+    .lc_contents{
+        padding: 20px;
+        padding-top: 60px;
+    }
+    .interestingImgs > h5 {
+        flex-wrap: wrap;
+    }
+    
+    .interestingImgs > h5 input {
+        margin: auto;
+        margin-top: 5px;
+        max-width: 100%;
+    }
+
+
+
+
+
+
+}
