@@ -1,15 +1,12 @@
-import Input from '../../Singlecomponents/Input'
-import Avatar from '../../../assets/img/fakebanner.png'
+import Input from '../../Singlecomponents/Input' 
 import Button from '../../Button/Button'
 import style from './style.module.css'
 import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import {getDatabase, ref, set,push} from 'firebase/database'
-import {useAuth} from '../../../Contexts/AuthContext'
-import { useLocation } from 'react-router-dom'
-import CopyToClipBoard from '../../../helpers/CopyToClipBoard'
-import TimeAgo from 'javascript-time-ago'
-import TranslateText from "../../../helpers/TranslateText";
+import {useAuth} from '../../../Contexts/AuthContext' 
+import CopyToClipBoard from '../../../helpers/CopyToClipBoard' 
+import { useTranslation } from "react-i18next";
 
 
 
@@ -22,6 +19,7 @@ export default function CreateModal({closeHandle}) {
     const [imgurl,seTimgurl] = useState('')
     const title = useRef(null)
     const {curentUser} = useAuth() 
+    const {t} = useTranslation()
 
     
 
@@ -102,15 +100,15 @@ export default function CreateModal({closeHandle}) {
                         <div>
                             <h5>{createdLink.title}</h5>
                             <i className='text-break'>{window.location.origin+""+createdLink.created_url}</i>
-                            <Button onClick={(e) => CopyToClipBoard(e,`${window.location.origin}${createdLink.created_url}`)}>{TranslateText('dashboard.create_link.copy')}</Button>
+                            <Button onClick={(e) => CopyToClipBoard(e,`${window.location.origin}${createdLink.created_url}`)}>{t('dashboard.create_link.copy')}</Button>
                         </div>
                     </div>
                     :  
                     <div className={style.create_link_area}> 
-                        <h5>{TranslateText('dashboard.create_link.title')}</h5>
+                        <h5>{t('dashboard.create_link.title')}</h5>
                         <Input placeholder="Write a title here..." ref={title} name="title" onChange={inputHandle}/>
                         <div className={style.interestingImgs}>
-                            <h5>{TranslateText('dashboard.create_link.select_img')} <Input placeholder="Search..." name="search" onChange={inputHandle}/></h5>
+                            <h5>{t('dashboard.create_link.select_img')} <Input placeholder="Search..." name="search" onChange={inputHandle}/></h5>
                             <div className={style.all_imgs}> 
                                 { !loading ?
                                     imgs.map((item,idx) => {
@@ -120,7 +118,7 @@ export default function CreateModal({closeHandle}) {
                                     <h4 className='text-center mt-3'>Loading....</h4>
                                 } 
                             </div>
-                            <Button type="submit">{TranslateText('dashboard.create_link.button')}</Button> 
+                            <Button type="submit">{t('dashboard.create_link.button')}</Button> 
                         </div>
                     </div>
                     }

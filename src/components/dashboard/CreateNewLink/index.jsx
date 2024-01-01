@@ -2,12 +2,13 @@ import Button from "../../../components/Button/Button";
 import style from './style.module.css'
 import CreateModal from './CreateModal.jsx'
 import { useState } from "react";
-import TranslateText from "../../../helpers/TranslateText";
+import { useTranslation } from "react-i18next"; 
 
 
 
 export default function CreateNewLink() {
   const [showModal,serShowModal] = useState(false)
+  const {t} = useTranslation()
   
   // Show modal
   const showModalHandle = () => {
@@ -24,7 +25,7 @@ export default function CreateNewLink() {
     return (
       <>
         <div className={style.createNewLink}>
-          <Button redTheme onClick={showModalHandle}>{TranslateText('dashboard.create_link.create_button')}</Button>
+          <Button redTheme onClick={showModalHandle}>{t('dashboard.create_link.create_button')}</Button>
         </div>
         {showModal && <CreateModal closeHandle={closeHandle} />}
       </>

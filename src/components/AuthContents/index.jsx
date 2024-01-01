@@ -1,9 +1,10 @@
 import style from './style.module.css'
 import Button from "../Button/Button";
-import Input from "../Singlecomponents/Input";
-import { useRef, useState } from 'react'; 
+import Input from "../Singlecomponents/Input"; 
 import {useAuth} from '../../Contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+import { useState } from 'react';
 
 
 
@@ -17,6 +18,7 @@ export default function AuthContents() {
     const [fval,setFval] = useState({name:'',email:'',password:'',cpassword:'',checked:false})
     const {singup,login} = useAuth()
     const history = useNavigate()
+    const {t} = useTranslation()
 
     const showLoginForm = () => {
         setloginFormIs(true)
@@ -67,27 +69,27 @@ export default function AuthContents() {
 
             <div className={style.login_regis_btns}>
                
-                {loginFormIs ? <Button type="button" redTheme onClick={showLoginForm}>Login</Button> : <Button type="button" onClick={showLoginForm}>Login</Button>  }
-                {!loginFormIs ? <Button type="button"  onClick={showRegisForm} redTheme>Registration</Button> :<Button type="button"  onClick={showRegisForm}>Registration</Button> }
+                {loginFormIs ? <Button type="button" redTheme onClick={showLoginForm}>{t('join.login_button')}</Button> : <Button type="button" onClick={showLoginForm}>Login</Button>  }
+                {!loginFormIs ? <Button type="button"  onClick={showRegisForm} redTheme>{t('join.registration_button')}</Button> :<Button type="button"  onClick={showRegisForm}>Registration</Button> }
                 
             </div>
-            <h2 className='mb-3'>{loginFormIs ? "Login" : "Create Account"}</h2>
+            <h2 className='mb-3'>{loginFormIs ? t('join.login_heading') : t('join.registration_heading')}</h2>
             {error && <div className="alert alert-danger" role="alert">Something is wrong, please check inputs and try again!</div>}
             <div className={loginFormIs ? `${style.login_wrp}` : `${style.login_wrp} d-none`}>
-                <Input type={'email'} name="email" placeholder="youremail@gmail.com" onChange={HandleInputs} value={fval.email}/> 
-                <Input type={'password'} name="password" placeholder="password" onChange={HandleInputs} value={fval.password}/>  
+                <Input type={'email'} name="email" placeholder={t('join.placeholder_email')} onChange={HandleInputs} value={fval.email}/> 
+                <Input type={'password'} name="password" placeholder={t('join.placeholder_password')} onChange={HandleInputs} value={fval.password}/>  
             </div>
             <div className={loginFormIs ? `${style.regis_wrp} d-none` : `${style.regis_wrp}`}>
-                <Input placeholder="Name" name="name" onChange={HandleInputs} value={fval.name}/> 
-                <Input type={'email'} name="email" placeholder="youremail@gmail.com" onChange={HandleInputs} value={fval.email}/>
-                <Input type={'password'} name="password" placeholder="Password" onChange={HandleInputs} value={fval.password}/>
-                <Input type={'password'} name="cpassword" placeholder="Confirm password" onChange={HandleInputs} value={fval.cpassword}/>
+                <Input placeholder={t('join.placeholder_name')} name="name" onChange={HandleInputs} value={fval.name}/> 
+                <Input type={'email'} name="email" placeholder={t('join.placeholder_email')} onChange={HandleInputs} value={fval.email}/>
+                <Input type={'password'} name="password" placeholder={t('join.placeholder_password')} onChange={HandleInputs} value={fval.password}/>
+                <Input type={'password'} name="cpassword" placeholder={t('join.placeholder_cpassword')} onChange={HandleInputs} value={fval.cpassword}/>
                 <label htmlFor="ckb"> 
                     <Input type={'checkbox'} id="ckb" name="checked" onClick={HandleInputs}/>
-                    I agree on your rules and all resposiblity is mine.
+                    {t('join.terms_txt')}
                 </label>
             </div>
-            <Button type="submit">Submit</Button>
+            <Button type="submit">{t('dashboard.create_link.button')}</Button>
         </form>
     )
 }

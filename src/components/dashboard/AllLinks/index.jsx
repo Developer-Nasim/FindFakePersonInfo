@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { useAuth } from "../../../Contexts/AuthContext";
-import useFetchData from "../../../Hooks/useFetchData";
+
+import { useAuth } from "../../../Contexts/AuthContext"; 
 import Button from "../../../components/Button/Button";
 import TimeFormate from "../../../helpers/TimeFormate";
 import UsePaginations from "../../../Hooks/UsePaginations";
-import style from './style.module.css' 
-import TranslateText from "../../../helpers/TranslateText";
+import style from './style.module.css'  
+import { useTranslation } from "react-i18next";
 
 
 function SingleLink({title,url,createdat,clicked,linkid}) {
@@ -15,9 +14,9 @@ function SingleLink({title,url,createdat,clicked,linkid}) {
         <h5 className="text-truncate">{title}</h5>
         <i className="text-break">{url}</i>
         <span>Created {createdat}</span>
-        {!clicked && <div className="mt-2 badge rounded-pill bg-warning text-dark">{TranslateText('dashboard.no_click')}</div>} 
+        {!clicked && <div className="mt-2 badge rounded-pill bg-warning text-dark">{t('dashboard.no_click')}</div>} 
       </div>
-      {clicked && <Button redTheme href={`/dashboard/linkdetails/${linkid}`}>{TranslateText('dashboard.link_button')}</Button>} 
+      {clicked && <Button redTheme href={`/dashboard/linkdetails/${linkid}`}>{t('dashboard.link_button')}</Button>} 
     </div>
   )
 }
@@ -37,12 +36,13 @@ function PlaceholderSingleLink() {
 
 export default function AllLinks() {
   const {curentUser} = useAuth()
+  const {t} = useTranslation()
   // const {loading,error,links,VKeys} = useFetchData('links')
   const {loading,error,showData,PaginationElements,Vkeys} = UsePaginations('links',curentUser.uid,5)
   
     return (
         <div className={style.AllLinks}>
-          <h4>{TranslateText('dashboard.heading')} </h4>
+          <h4>{t('dashboard.heading')} </h4>
           <div className={style.linkLists}>
    
             {loading ? 

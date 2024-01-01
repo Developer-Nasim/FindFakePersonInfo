@@ -2,8 +2,8 @@ import { useReducer, useRef, useState } from "react";
 import Button from "../Button/Button"; 
 import Sectiontm from "../Singlecomponents/Sectiontm";
 import Class from './style.module.css'
-import SendMail from "../../helpers/MailSending";
-import TranslateText from "../../helpers/TranslateText";
+import SendMail from "../../helpers/MailSending"; 
+import { useTranslation } from "react-i18next";
 
  
 
@@ -56,6 +56,7 @@ export default function ContactSection() {
     const [fstate, dispatcher] = useReducer(reduceing,initState)
     const contact_form = useRef(null)
     const [loading,setLoading] = useState(false)
+    const {t} = useTranslation()
 
     const inputChanges = (e) => {
         dispatcher({
@@ -86,8 +87,8 @@ export default function ContactSection() {
             <div className="row">
                 <div className="col-lg-12">
                     <form onSubmit={submitForm} className={Class.contact_form} ref={contact_form}>
-                        <h1>{TranslateText('home.contact.heading')}</h1>
-                        <p>{TranslateText('home.contact.content')}</p>
+                        <h1>{t('home.contact.heading')}</h1>
+                        <p>{t('home.contact.content')}</p>
 
                         <div className="alert alert-success d-none" role="alert">Message sent successfully!</div>
 
@@ -96,7 +97,7 @@ export default function ContactSection() {
                         <input type="text" placeholder="Reason or subject" name="subj" value={fstate?.subj || ''} onChange={inputChanges}/>
                         <textarea placeholder="Message...." name="message" value={fstate?.message || ''} onChange={inputChanges}/>
 
-                        {!loading ? <Button type="submit">{TranslateText('home.contact.button')}</Button> : <Button type="button" disabled>{TranslateText('home.contact.button')}</Button>}
+                        {!loading ? <Button type="submit">{t('home.contact.button')}</Button> : <Button type="button" disabled>{t('home.contact.button')}</Button>}
                         
                     </form>
                 </div>

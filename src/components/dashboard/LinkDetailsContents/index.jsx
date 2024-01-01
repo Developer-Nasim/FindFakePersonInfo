@@ -1,4 +1,3 @@
- 
 import style from './style.module.css'
 import {getDatabase, ref, get} from 'firebase/database' 
 import Avatar from '../../../assets/img/no-product-image.png' 
@@ -8,6 +7,7 @@ import { useAuth } from "../../../Contexts/AuthContext";
 import TimeFormate from '../../../helpers/TimeFormate'
 import Button from '../../Button/Button'
 import LMap from './LMap'
+import { useTranslation } from "react-i18next";
 
 export default function LinkDetailsContents() {
   const [details,setDetails] = useState()
@@ -18,6 +18,7 @@ export default function LinkDetailsContents() {
   const {curentUser} = useAuth() 
   const {search} = useLocation() 
   const ExtractKey = search.replace("?",'')
+  const {t} = useTranslation()
 
   useEffect(() => { 
     async function GetLinkDetails() {
@@ -54,45 +55,45 @@ export default function LinkDetailsContents() {
                 <h5 className='text-break'>{details.url}</h5>
                 <span>last clicked {details.clicked_at ? TimeFormate(details.clicked_at) : "Some times ago"}</span>
               </div>  
-              <ul>
+              <ul> 
                 <li>
-                  <b className="d-block text-truncate">ISP Brand</b>
+                  <b className="d-block text-truncate">{t('link_details.isp')}</b>
                   <span className="d-block text-break">{details.as} (details.isp)</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Country</b>
+                  <b className="d-block text-truncate">{t('link_details.country')}</b>
                   <span className="d-block text-break">{details.country}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Division</b>
+                  <b className="d-block text-truncate">{t('link_details.devision')}</b>
                   <span className="d-block text-break">{details.regionName}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">City</b>
+                  <b className="d-block text-truncate">{t('link_details.city')}</b>
                   <span className="d-block text-break">{details.city}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Location on Map</b>
+                  <b className="d-block text-truncate">{t('link_details.location')}</b>
                   <span className="d-block text-break"><NavLink target='_blank' to={`https://www.google.com/maps/@${details.lat},${details.lon}`}>Click See Loction</NavLink></span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Device Type</b>
+                  <b className="d-block text-truncate">{t('link_details.device')}</b>
                   <span className="d-block text-break">{details.mobile ? 'Mobile' : 'laptop/desktop'}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Browser</b>
+                  <b className="d-block text-truncate">{t('link_details.browser')}</b>
                   <span className="d-block text-break">{details.brand}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">Operating system</b>
+                  <b className="d-block text-truncate">{t('link_details.operating_system')}</b>
                   <span className="d-block text-break">{details.platform}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">IP address</b>
+                  <b className="d-block text-truncate">{t('link_details.ip')}</b>
                   <span className="d-block text-break">{details.query}</span>
                 </li> 
                 <li>
-                  <b className="d-block text-truncate">TimeZon</b>
+                  <b className="d-block text-truncate">{t('link_details.timezone')}</b>
                   <span className="d-block text-break">{details.timezone}</span>
                 </li> 
               </ul>

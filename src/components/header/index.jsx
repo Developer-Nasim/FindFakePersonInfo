@@ -5,8 +5,8 @@ import LiA from '../Singlecomponents/LiA'
 import Class from "./style.module.css"
 import { NavLink } from 'react-router-dom'
 import {useAuth} from '../../Contexts/AuthContext' 
-import TranslateButton from '../Translate'
-import TranslateText from '../../helpers/TranslateText'
+import TranslateButton from '../Translate' 
+import { useTranslation } from "react-i18next";
 
 
 
@@ -14,6 +14,7 @@ import TranslateText from '../../helpers/TranslateText'
 export default function Header() {
     const [showMenu,setShowMenu] = useState(false)
     const {curentUser} = useAuth();  
+    const {t} = useTranslation()
 
     return(
         <header> 
@@ -27,13 +28,13 @@ export default function Header() {
                     <div className="col-md-9 col-4 text-end">
                         <nav className={showMenu ? `${Class.menu} ${Class.showMenu} d-flex justify-content-end align-items-center` : Class.menu+" d-flex justify-content-end align-items-center "}>  
                             <ul className='d-flex m-0 p-0'>
-                                <LiA to="/">{TranslateText('header.home')}</LiA>
-                                <LiA to="/about">{TranslateText('header.about')}</LiA>
-                                <LiA to="/howto">{TranslateText('header.howto')}</LiA>
-                                <LiA to="/contactus">{TranslateText('header.contact')}</LiA>
+                                <LiA to="/">{t('header.home')}</LiA>
+                                <LiA to="/about">{t('header.about')}</LiA>
+                                <LiA to="/howto">{t('header.howto')}</LiA>
+                                <LiA to="/contactus">{t('header.contact')}</LiA>
                             </ul>  
                             
-                            {curentUser ? <Button href={'/dashboard'}>{TranslateText('header.dashboard')}</Button>  : <Button redTheme href={'/join'}>{TranslateText('header.join')}</Button>  }
+                            {curentUser ? <Button href={'/dashboard'}>{t('header.dashboard')}</Button>  : <Button redTheme href={'/join'}>{t('header.join')}</Button>  }
                             <TranslateButton/>
                             
                         </nav>
