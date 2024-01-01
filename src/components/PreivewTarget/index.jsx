@@ -50,7 +50,7 @@ export default function PreivewTarget() {
                 AskLocationPermision()
             } catch (error) {
                 seterror(true)
-                console.log('issues:', error)
+                console.error('issues:', error)
             }
   
         }

@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 
 function SingleLink({title,url,createdat,clicked,linkid}) {
+  const {t} = useTranslation()
   return(
     <div className={style.linkList}>
       <div> 
@@ -43,8 +44,7 @@ export default function AllLinks() {
     return (
         <div className={style.AllLinks}>
           <h4>{t('dashboard.heading')} </h4>
-          <div className={style.linkLists}>
-   
+          <div className={style.linkLists}> 
             {loading ? 
             <>
               <PlaceholderSingleLink/> 

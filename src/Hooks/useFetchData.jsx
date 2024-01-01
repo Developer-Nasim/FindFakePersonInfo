@@ -24,7 +24,7 @@ export default function useFetchData(dbname) {
                     setVKeys([...Object.keys(vals).reverse()])
                 } 
             } catch (error) {
-                console.log('en error',error)
+                console.error('en error',error)
                 setLoading(false)
                 seterror(true)
             }

@@ -21,9 +21,11 @@ export default function UsePaginations(dbname,uid,showPerPage) {
             const db = getDatabase()
             const dbRef = ref(db,`${dbname}/${uid}`)
             const snap = await get(dbRef)
-            setAlldata(Object.values(snap.val()).reverse())
-            setalldataKeys(Object.keys(snap.val()).reverse())
-            setcurrentItem(1)
+            if (snap.exists()) {
+                setAlldata(Object.values(snap.val()).reverse())
+                setalldataKeys(Object.keys(snap.val()).reverse())
+                setcurrentItem(1)
+            }
             setloading(false) 
         } catch (error) {
             seterror(true)

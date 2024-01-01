@@ -36,7 +36,7 @@ export default function CreateModal({closeHandle}) {
             setImgs(res.data.results)
             setLoading(false)
         })
-        .catch(err => console.log(err))  
+        .catch(err => console.error(err))  
  
     },[text.search])
  
@@ -82,7 +82,7 @@ export default function CreateModal({closeHandle}) {
                 setCreatedLink(datas)
                 target.classList.remove('disabled')
             } catch (error) {
-                console.log(error)
+                console.error(error)
                 target.classList.remove('disabled')
             }
         }

@@ -54,7 +54,7 @@ export default function AuthContents() {
                 }
             }
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
  

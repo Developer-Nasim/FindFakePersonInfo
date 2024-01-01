@@ -27,7 +27,7 @@ export async function StoreData(uid,datas,dbname,infoDB=false) {
 
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 
@@ -38,7 +38,7 @@ export async function GetDetails(uid,key,dbname) {
         const snap = await get(dbRefs);
         return snap.val()
     } catch (error) {
-        console.log(error)
+        console.error(error)
     } 
 }
 
