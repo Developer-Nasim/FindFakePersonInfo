@@ -1,6 +1,7 @@
 import LiA from "../../Singlecomponents/LiA"; 
 import style from './style.module.css'
 import { useAuth } from "../../../Contexts/AuthContext";
+import TranslateText from "../../../helpers/TranslateText";
 
 export default function ProfileCart() {
     const {curentUser,logout} = useAuth()
@@ -16,8 +17,8 @@ export default function ProfileCart() {
             <h4 className="text-truncate">{curentUser ? curentUser.displayName : ''}</h4>
             <p>{curentUser ? curentUser.email : ''}</p>
             <ul>
-                <LiA to="/dashboard">Dashboard</LiA>  
-                <LiA to="/logout" onClick={LogOutNow}>Log Out</LiA>
+                <LiA to="/dashboard">{TranslateText('header.dashboard')}</LiA>  
+                <LiA to="/logout" onClick={LogOutNow}>{TranslateText('dashboard.logout')}</LiA>
             </ul>
         </div>
     )

@@ -5,6 +5,7 @@ import Button from "../../../components/Button/Button";
 import TimeFormate from "../../../helpers/TimeFormate";
 import UsePaginations from "../../../Hooks/UsePaginations";
 import style from './style.module.css' 
+import TranslateText from "../../../helpers/TranslateText";
 
 
 function SingleLink({title,url,createdat,clicked,linkid}) {
@@ -14,9 +15,9 @@ function SingleLink({title,url,createdat,clicked,linkid}) {
         <h5 className="text-truncate">{title}</h5>
         <i className="text-break">{url}</i>
         <span>Created {createdat}</span>
-        {!clicked && <div className="mt-2 badge rounded-pill bg-warning text-dark">No Clicked Yet!</div>} 
+        {!clicked && <div className="mt-2 badge rounded-pill bg-warning text-dark">{TranslateText('dashboard.no_click')}</div>} 
       </div>
-      {clicked && <Button redTheme href={`/dashboard/linkdetails/${linkid}`}>View</Button>} 
+      {clicked && <Button redTheme href={`/dashboard/linkdetails/${linkid}`}>{TranslateText('dashboard.link_button')}</Button>} 
     </div>
   )
 }
@@ -41,7 +42,7 @@ export default function AllLinks() {
   
     return (
         <div className={style.AllLinks}>
-          <h4>All Links </h4>
+          <h4>{TranslateText('dashboard.heading')} </h4>
           <div className={style.linkLists}>
    
             {loading ? 

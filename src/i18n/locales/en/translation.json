@@ -1,0 +1,104 @@
+{
+    "header":{
+        "home": "Home",
+        "about": "About",
+        "howto": "How To?",
+        "contact": "Contact",
+        "join": "Login / Join",
+        "dashboard": "Dashboard"
+    },
+    "footer":{
+        "copyright": "© All right reserved",
+        "privacy": "Privacy Policy",
+        "tos": "Terms of Service"
+    },
+    "home":{
+        "hero":{
+            "heading":"Get Fake Person informations", 
+            "content":"In the internet/Social media so many fake users. Most of them create there profile to disturb other real users, So if you are disturbed by any fake user of social media or you wanna know more about someone in the Internet then this Tool is perfect for you.",
+            "button": "Find Now"
+        },
+        "about":{
+            "heading":"Get Fake Persons Information", 
+            "content":"This tool is developed by Amiruzzaman Nasim who is a Full-Stack web developer with 4 years of experience and worked on 200+ project through Fiverr Market Place. Amiruzzaman Nasim also disturbed with some fake users of social media and that's why he built this tool because he tough there have so many people who's suffering this issue on the internet. it's a very Powerful tool where you can get a fake person's photo, current location, device information and more. Even it's too easy then others solutions which available on the internet, and obviously it's better than other solutions. So if you are interested to use this tool then you can use from now because it's totally free, you never need to pay to use this tool. and yes remember all the fake person data will taken by users permission",
+            "button": "Start for Free",
+            "label":"Developed by:", 
+            "name":"Amiruzzaman Nasim", 
+            "call":"+8801405618060"
+        },
+        "howto":{
+            "heading":"How it is work?",
+            "button": "Get Started",
+            "step":{
+                "num":"01",
+                "content":"After caming into this site you need Create and Account if you already have an account then you just Login."
+            },
+            "step2":{
+                "num":"02",
+                "content":"After Successfully Login/Create account you will be in the Dashboard page, from the Dashboard page you will get a Button called 'Create' and click there to get a popup"
+            },
+            "step3":{
+                "num":"03",
+                "content":"In the popup you will get input box To write title so write an interesting title and then below select an interesting image"
+            },
+            "step4":{
+                "num":"04",
+                "content":"And then Click on Create button from below then you will get a Card Item where the created link with image will be show, from there click on the Copy Button to copy that link"
+            },
+            "step5":{
+                "num":"05",
+                "content":"Now share this link with someone in the soical media app. if some will click on that link then there details will be added under your link. an of course you will get there details with there permission"
+            },
+            "step6":{
+                "num":"06",
+                "content":"That's all if but please don't expect 100% accurate informaotions cause it's depend on the users and devices"
+            }
+        },
+        "contact":{
+            "heading":"Contact Us", 
+            "content":"For any issue or help, please contact us through this form.",
+            "button": "Send"
+        }
+    },
+    "join":{
+        "login_heading":"login",
+        "login_button":"Login",
+        "registration_heading":"Create Account",
+        "registration_button":"Registration",
+
+        "terms_txt": "I agree, and I know as well all about the TOS/Rules/Condition",
+        "placeholder_name": "Your Name",
+        "placeholder_email": "Your Email",
+        "placeholder_password": "Password",
+        "placeholder_cpassword": "Confirm Password"
+    },
+    "dashboard":{
+        "logout": "logout",
+        "heading": "All Links",
+        "link_button": "View",
+        "no_click": "No one Clicked Yet!",
+        "create_link":{
+            "create_button": "Create",
+            "title": "Add a title",
+            "select_img": "Select an Interesting Image",
+            "button": "Done",
+            "copy": "Copy Link"
+        }
+    },
+    "link_details":{
+        "isp": "ISP Brand",
+        "country": "Country",
+        "devision": "Devision",
+        "city": "City",
+        "location": "Location on Map",
+        "device": "Using Device",
+        "browser": "Browser App",
+        "operating_system": "Operating System",
+        "ip": "IP Address",
+        "timezone": "TimeZone"
+    },
+    "not_found":{
+        "heading": "This page is not avilable",
+        "button": "Go Back" 
+    }
+}

@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import Sectiontm from "../Singlecomponents/Sectiontm";
 import Class from './style.module.css'
 import SendMail from "../../helpers/MailSending";
+import TranslateText from "../../helpers/TranslateText";
 
  
 
@@ -85,8 +86,8 @@ export default function ContactSection() {
             <div className="row">
                 <div className="col-lg-12">
                     <form onSubmit={submitForm} className={Class.contact_form} ref={contact_form}>
-                        <h1>Contact Us</h1>
-                        <p>For any issue or help, please contact us through this form.</p>
+                        <h1>{TranslateText('home.contact.heading')}</h1>
+                        <p>{TranslateText('home.contact.content')}</p>
 
                         <div className="alert alert-success d-none" role="alert">Message sent successfully!</div>
 
@@ -95,7 +96,7 @@ export default function ContactSection() {
                         <input type="text" placeholder="Reason or subject" name="subj" value={fstate?.subj || ''} onChange={inputChanges}/>
                         <textarea placeholder="Message...." name="message" value={fstate?.message || ''} onChange={inputChanges}/>
 
-                        {!loading ? <Button type="submit">Start for Free</Button> : <Button type="button" disabled>Start for Free</Button>}
+                        {!loading ? <Button type="submit">{TranslateText('home.contact.button')}</Button> : <Button type="button" disabled>{TranslateText('home.contact.button')}</Button>}
                         
                     </form>
                 </div>

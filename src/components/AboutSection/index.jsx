@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import BgImg from '../../assets/img/fakebanner.png'
 import Sectiontm from "../Singlecomponents/Sectiontm";
 import Class from './style.module.css'
+import TranslateText from '../../helpers/TranslateText'
 
 
 
@@ -13,24 +14,17 @@ export default function AboutSection() {
                     <div className={Class['about-contents']}>
                         <img src={BgImg} alt="" />
                         <div>
-                            <h3>Get there information</h3>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
-                            <p>Unknown person disturbing you in social media? are you worried about it, if and if you want to find them then is tool is for you, and it’s a perfect tool for you.</p>
+                            <h3 className="text-center mb-3">{TranslateText('home.about.heading')}</h3>
+                            <p>{TranslateText('home.about.content')}</p>
                             <p>
-                                <span><b>Developed by:</b></span>
+                                <span><b>{TranslateText('home.about.label')}:</b></span>
                                 <div>
-                                    <a href="#">Amiruzzaman Nasim</a>
-                                    <span><b>E-Mail</b>: ajnasim72@gmail.com</span>
-                                    <span><b>Call</b>: +8801405618060</span>
+                                    <a href="https://www.linkedin.com/in/amiruzzaman-nasim/">{TranslateText('home.about.name')}</a>
+                                    <span><b>E-Mail</b>: {TranslateText('home.about.email')}</span>
+                                    <span><b>Call</b>: {TranslateText('home.about.call')}</span>
                                 </div>
                             </p>
-                            <Button redTheme href={"login"}>Start for Free</Button>
+                            <Button redTheme href={"login"}>{TranslateText('home.about.button')}</Button>
                         </div>
                     </div>
                 </div>

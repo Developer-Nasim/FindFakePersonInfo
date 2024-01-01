@@ -36,6 +36,13 @@ a.logo {
     width: 30px;
     height: auto;
 }
+.menu > button {
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 13px;
+    background: var(--blkcolor);
+    color: var(--whcolor);
+}
 @media screen and (max-width:768px) { 
     .menu {
         position: fixed;

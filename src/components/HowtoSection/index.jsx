@@ -6,9 +6,11 @@ import Class from './style.module.css'
 import ContentCart from "../ContentCart";
 import YouTube from "react-youtube";
 import { useEffect, useState } from "react";
+import TranslateText from '../../helpers/TranslateText'
 
 
 
+// Single step
 function Step({rightMode,idx,children}) {
     return( 
         <div className={rightMode ? `${Class.rightMode} ${Class.step}` : `${Class.step}`}>
@@ -47,16 +49,17 @@ export default function HowtoSection() {
                             </ContentCart>
                         )}
                         <div className={Class.how_to_steps}>
-                            <h1>How it is work?</h1>
+                            <h1>{TranslateText('home.howto.heading')}</h1>
                             <div className={Class.steps}>
-                                <Step idx="01">Unknown person disturbing you in social media? are you worried about it, if and if</Step>
-                                <Step idx="02" rightMode>Unknown person disturbing you in social media? are you worried about it, if and if</Step>
-                                <Step idx="03">Unknown person disturbing you in social media? are you worried about it, if and if</Step>
-                                <Step idx="04" rightMode>Unknown person disturbing you in social media? are you worried about it, if and if</Step>
-                                <Step idx="05">Unknown person disturbing you in social media? are you worried about it, if and if</Step>
+                                <Step idx={TranslateText('home.howto.step.num')}>{TranslateText('home.howto.step.content')}</Step>
+                                <Step idx={TranslateText('home.howto.step2.num')} rightMode>{TranslateText('home.howto.step2.content')}</Step>
+                                <Step idx={TranslateText('home.howto.step3.num')}>{TranslateText('home.howto.step3.content')}</Step>
+                                <Step idx={TranslateText('home.howto.step4.num')} rightMode>{TranslateText('home.howto.step4.content')}</Step>
+                                <Step idx={TranslateText('home.howto.step5.num')}>{TranslateText('home.howto.step5.content')}</Step>
+                                <Step idx={TranslateText('home.howto.step6.num')} rightMode>{TranslateText('home.howto.step6.content')}</Step>
                             </div>
                         </div>
-                        <Button href={"/dashboard"} redTheme>Get Started</Button>
+                        <Button href={"/dashboard"} redTheme>{TranslateText('home.howto.button')}</Button>
                     </div>
                 </div>
             </div>
