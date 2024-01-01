@@ -10,7 +10,7 @@ import { useAuth } from './Contexts/AuthContext.jsx';
 
 import Preloader from './components/Preloader/index.jsx';
 
-
+  
 const HomePage = lazy(() => import('./pages/Home.jsx'))
 const AboutPage = lazy(() => import('./pages/About.jsx'))
 const HowtoPage = lazy(() => import('./pages/Howto.jsx'))
@@ -25,6 +25,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFound.jsx'))
  
 
 const PrivateRoute = () => {
+  
   const { curentUser } = useAuth();
   return curentUser ? <Outlet /> : <Navigate to="/login" />;
 };

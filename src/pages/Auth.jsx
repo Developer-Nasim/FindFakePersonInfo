@@ -1,20 +1,9 @@
-import { useEffect, useState } from "react";
-import Button from "../components/Button/Button";
-import Input from "../components/Singlecomponents/Input";
+import { useEffect } from "react";
 import Sectiontm from "../components/Singlecomponents/Sectiontm";
-import AuthContents from "../components/AuthContents";
-import { useAuth } from "../Contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import AuthContents from "../components/AuthContents"; 
 import HtmlTitle from "../helpers/HtmlTitle";
 
-export default function Auth() {
-    const {curentUser} = useAuth()
-    const history = useNavigate()
-    // useEffect(() => {
-    //     if (curentUser) {
-    //         history('/dashboard')
-    //     }
-    // },[])
+export default function Auth() { 
     // Set page title
     useEffect(() => {
         HtmlTitle('Login or Created account to get started')
