@@ -4,9 +4,10 @@ import Button from "../../../components/Button/Button";
 import TimeFormate from "../../../helpers/TimeFormate";
 import UsePaginations from "../../../Hooks/UsePaginations";
 import style from './style.module.css'  
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"; 
 
 
+// Single link item
 function SingleLink({title,url,createdat,clicked,linkid}) {
   const {t} = useTranslation()
   return(
@@ -22,6 +23,7 @@ function SingleLink({title,url,createdat,clicked,linkid}) {
   )
 }
 
+// Placeholders
 function PlaceholderSingleLink() {
   return(
     <div className={`${style.linkList}`}>
@@ -38,7 +40,8 @@ function PlaceholderSingleLink() {
 export default function AllLinks() {
   const {curentUser} = useAuth()
   const {t} = useTranslation()
-  // const {loading,error,links,VKeys} = useFetchData('links')
+     
+ 
   const {loading,error,showData,PaginationElements,Vkeys} = UsePaginations('links',curentUser.uid,5)
   
     return (

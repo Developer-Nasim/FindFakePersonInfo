@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import Button from "../../components/Button/Button";
-import ContentCart from "../../components/ContentCart";
+import { useEffect } from "react"; 
 import Sectiontm from "../../components/Singlecomponents/Sectiontm";
 import AllLinks from "../../components/dashboard/AllLinks";
 import CreateNewLink from "../../components/dashboard/CreateNewLink";
@@ -11,7 +9,8 @@ export default function Profile() {
     // Set page title
     useEffect(() => {
         HtmlTitle('Profile')
-    },[])
+    },[]) 
+
     return (
         <Sectiontm className="profile-section">
             <div className="row">

@@ -36,6 +36,8 @@ export default function LinkDetailsContents() {
   },[]) 
  
 
+     
+
 
     return (
         <div className={style.linkDetails}> 

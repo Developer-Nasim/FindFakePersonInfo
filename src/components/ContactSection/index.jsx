@@ -9,11 +9,11 @@ import { useTranslation } from "react-i18next";
 
 // although we don't need to use this useReducer, we can do it through useState
 const initState = {name:'',email:'',subj:'',message:''}
-const reduceing = (state,{form,target,acType}) => {  
+const reduceing = (state,{form,target,acType}) => {
     switch (acType) {
-        case 'storeData':
+        case 'storeData': 
             return {...state,[target.name]: target.value} 
-        case 'submitData':
+        case 'submitData': 
             return (
                 SubmitData()
             )
@@ -44,7 +44,6 @@ const reduceing = (state,{form,target,acType}) => {
             setTimeout(() => {
                 alert.classList.add('d-none')
             }, 1000);
-            SendMail(state)
             return {name:'',email:'',subj:'',message:''}
         }
     }
@@ -70,14 +69,18 @@ export default function ContactSection() {
         e.preventDefault()
         setLoading(true)
         try {
+            if (fstate.name.length > 0 || fstate.email.length > 0 || fstate.subj.length > 0 || fstate.message.length > 0) {
+                SendMail(fstate)
+            }
             dispatcher({
                 form:contact_form.current,
                 target: 'none',
                 acType: 'submitData'
-            })
-            setLoading(false)
+            })  
         } catch (error) {
-            setLoading(false)
+            console.log(error)
+        } finally {
+            setLoading(false) 
         }
     }
 
@@ -97,7 +100,7 @@ export default function ContactSection() {
                         <input type="text" placeholder="Reason or subject" name="subj" value={fstate?.subj || ''} onChange={inputChanges}/>
                         <textarea placeholder="Message...." name="message" value={fstate?.message || ''} onChange={inputChanges}/>
 
-                        {!loading ? <Button type="submit">{t('home.contact.button')}</Button> : <Button type="button" disabled>{t('home.contact.button')}</Button>}
+                        {!loading ? <Button type="submit">{t('home.contact.button')}</Button> : <div className="disabled_blk"><Button type="button" disabled>{t('home.contact.button')}</Button></div> }
                         
                     </form>
                 </div>

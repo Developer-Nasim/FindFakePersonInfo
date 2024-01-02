@@ -111,6 +111,10 @@ section.profile-section .aside ul li a.activeForProfile{
     border-radius: 0 !important;
     height: 350px !important;
 }
+.disabled_blk > button{
+    opacity: .5;
+    cursor: not-allowed;
+}
 @media screen and (max-width:768px) {
     input { 
         padding: 10px; 

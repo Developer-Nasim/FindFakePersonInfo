@@ -6,20 +6,19 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { useState } from 'react';
 
-
-
-
-
+ 
 
 
 export default function AuthContents() {
+    const [loading,setLoading] = useState(false)
     const [error,setError] = useState(false)
     const [loginFormIs,setloginFormIs] = useState(true)
     const [fval,setFval] = useState({name:'',email:'',password:'',cpassword:'',checked:false})
     const {singup,login} = useAuth()
     const history = useNavigate()
     const {t} = useTranslation()
-
+     
+ 
     const showLoginForm = () => {
         setloginFormIs(true)
     }
@@ -36,6 +35,7 @@ export default function AuthContents() {
 
     const submit = async (e) =>{
         e.preventDefault() 
+        setLoading(true)
         try {
             if (!loginFormIs) {
                 if (fval.name.length <= 0 || fval.email.length <= 0 || fval.password.length <= 0 || fval.cpassword.length <= 0) {
@@ -54,6 +54,7 @@ export default function AuthContents() {
                 }
             }
         } catch (error) {
+            setLoading(false)
             console.error(error)
         }
     }
@@ -88,8 +89,9 @@ export default function AuthContents() {
                     <Input type={'checkbox'} id="ckb" name="checked" onClick={HandleInputs}/>
                     {t('join.terms_txt')}
                 </label>
-            </div>
-            <Button type="submit">{t('dashboard.create_link.button')}</Button>
+            </div> 
+            {!loading ? <Button type="submit">{t('dashboard.create_link.button')}</Button> : <div className="disabled_blk"><Button type="button" disabled>{t('dashboard.create_link.button')}</Button></div> }
+            
         </form>
     )
 }

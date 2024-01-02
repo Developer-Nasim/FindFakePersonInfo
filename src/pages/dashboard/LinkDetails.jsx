@@ -9,7 +9,8 @@ export default function LinkDetails() {
     // Set page title
     useEffect(() => {
         HtmlTitle('Link Details')
-    },[])
+    },[]) 
+
 
     return (
         <Sectiontm className="LinkDetails-section">

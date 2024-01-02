@@ -12,13 +12,11 @@
     margin-bottom: 50px;
 }
 
-.about-contents p > div {
-    display: flex;
-    flex-wrap: wrap;
-}
+ 
 
-.about-contents p > div span {
-    margin-left: 20px;
+.about-contents > div > div > div span {
+    display: block;
+    margin-top: 5px;
 }
 .about-contents > div > a {
     display: block;
@@ -26,19 +24,15 @@
     margin-top: 40px;
     width: max-content;
 }
+
+
 @media screen and (max-width:768px) {
     .about-contents { 
         padding: 20px; 
     }
     .about-contents > img { 
         margin-bottom: 15px;
-    }
-    .about-contents p > div span {
-        margin-left: 0;
-        margin-top: 5px;
-        display: block;
-        width: 100%;
-    }
+    } 
 
 
 

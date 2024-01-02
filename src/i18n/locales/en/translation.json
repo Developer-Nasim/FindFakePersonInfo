@@ -24,7 +24,8 @@
             "button": "Start for Free",
             "label":"Developed by:", 
             "name":"Amiruzzaman Nasim", 
-            "call":"+8801405618060"
+            "call":"+8801405618060",
+            "email": "ajnasim72@gmail.com"
         },
         "howto":{
             "heading":"How it is work?",

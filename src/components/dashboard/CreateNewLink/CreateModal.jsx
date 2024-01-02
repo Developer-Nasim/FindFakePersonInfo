@@ -21,7 +21,7 @@ export default function CreateModal({closeHandle}) {
     const {curentUser} = useAuth() 
     const {t} = useTranslation()
 
-    
+      
 
 
     useEffect(() => { 
@@ -59,10 +59,7 @@ export default function CreateModal({closeHandle}) {
         const target = e.target
         target.classList.add('disabled')
 
-        if (0 >= text.title.length || 0 >= imgurl.length) {
-            title.current.classList.add('empty') 
-            target.classList.remove('disabled')
-        }else{  
+        if (text.title.length > 0 && imgurl.length > 0) {
             try { 
                 const {uid} = curentUser
                 const db = getDatabase()
@@ -77,7 +74,7 @@ export default function CreateModal({closeHandle}) {
 
                 await set(newPostRef,{
                     ...datas
-                })  
+                })
                 SetStatus(true)
                 setCreatedLink(datas)
                 target.classList.remove('disabled')
@@ -85,7 +82,12 @@ export default function CreateModal({closeHandle}) {
                 console.error(error)
                 target.classList.remove('disabled')
             }
-        }
+        }else{
+            if (0 >= text.title.length || 0 >= imgurl.length) {
+                title.current.classList.add('empty') 
+                target.classList.remove('disabled')
+            }
+        } 
     }
 
  

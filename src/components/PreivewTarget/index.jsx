@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import style from './style.module.css'   
-import axios from "axios";  
-import { getDatabase, push, ref, set } from "firebase/database";
+import axios from "axios";   
 import { StoreData } from "../../helpers/DbActions";
-import { useLocation } from "react-router-dom";
-import {useAuth} from '../../Contexts/AuthContext'
+import { useLocation } from "react-router-dom"; 
 import useFetchDetails from "../../Hooks/useFetchDetails";
 
 
