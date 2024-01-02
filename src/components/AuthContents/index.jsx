@@ -38,7 +38,7 @@ export default function AuthContents() {
         setLoading(true)
         try {
             if (!loginFormIs) {
-                if (fval.name.length <= 0 || fval.email.length <= 0 || fval.password.length <= 0 || fval.cpassword.length <= 0) {
+                if (fval.name.length <= 0 || fval.email.length <= 0 || fval.password.length <= 0 || fval.cpassword.length <= 0 || (fval.password !== fval.cpassword)) {
                     setError(true)
                 }else{ 
                     await singup(fval.email,fval.password,fval.name)
@@ -53,6 +53,7 @@ export default function AuthContents() {
                     history('/dashboard')
                 }
             }
+            setLoading(false)
         } catch (error) {
             setLoading(false)
             console.error(error)

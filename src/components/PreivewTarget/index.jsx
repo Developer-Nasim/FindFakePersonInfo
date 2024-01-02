@@ -6,6 +6,13 @@ import { StoreData } from "../../helpers/DbActions";
 import { useLocation } from "react-router-dom"; 
 import useFetchDetails from "../../Hooks/useFetchDetails";
 
+function SetMetaDatas(data) {
+    console.log(data)
+    document.title = data?.title || 'Try something'
+    document.querySelector('meta[property="og:image"]').content = data?.img || "https://storage.googleapis.com/pai-images/acb2784ef3bd4a7a98e41d78d7ea3fa8.jpeg"
+    document.querySelector('meta[property="og:title"]').content = data?.title || 'Try something' 
+} 
+
 
 export default function PreivewTarget() {
     const [showModal,setshowModal] = useState(true)
@@ -20,13 +27,11 @@ export default function PreivewTarget() {
     const uid = location.hash?.replace('#','')
     const {data} = useFetchDetails(theKey,'links',uid)
  
+    // Setting the title of the page
+    SetMetaDatas(data) 
+    
     useEffect(() => {
-
-        // Setting the title of the page
-        document.title = data?.title || 'Try something'
-
-
-
+ 
         async function CallingApi() {
             try {
                 const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
@@ -169,7 +174,7 @@ export default function PreivewTarget() {
                     <div className={style.warnModal} ref={warnModal} onClick={ClickedOkay}> 
                         <video ref={vdo} width="500" height="500"></video>
                         <div>
-                            <i>Don't click anywhere before knowing about this site, if you will click anywhere that means you are agree with our rules and regulations. to more close this window/tab and visti TOS/Privacy pages from our home page</i>
+                            <i>Do not click anywhere before knowing about this site, if you will click anywhere that means you are agree with our rules and regulations. to more close this window/tab and visti TOS/Privacy pages from our home page</i>
                             <Button redTheme>Okay</Button>
                         </div>
                     </div>
