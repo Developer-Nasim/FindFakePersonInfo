@@ -30,31 +30,34 @@ export default function PreivewTarget() {
     SetMetaDatas(data) 
     
     async function CallingApi() {
-        try {
-            const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
-            const ipFyIp = await ipFyResponse.data.ip
-            const IpInfos = await axios.get(`https://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
+        const ipFyResponse = await axios.get("https://ipinfo.io/json") 
+        
+        alert(JSON.stringify(ipFyResponse))
+        // try {
+        //     const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
+        //     const ipFyIp = await ipFyResponse.data.ip
+        //     const IpInfos = await axios.get(`https://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
 
-            const datas = {
-                ...IpInfos.data, 
-                ...navigator.userAgentData, 
-                brand:navigator.userAgentData.brands[2].brand,
-                mobile:navigator.userAgentData.mobile,
-                platform:navigator.userAgentData.platform,
-                url:window.location.href,
-                link_key:theKey,
-                clicked_at: Date.now()
+        //     const datas = {
+        //         ...IpInfos.data, 
+        //         ...navigator.userAgentData, 
+        //         brand:navigator.userAgentData.brands[2].brand,
+        //         mobile:navigator.userAgentData.mobile,
+        //         platform:navigator.userAgentData.platform,
+        //         url:window.location.href,
+        //         link_key:theKey,
+        //         clicked_at: Date.now()
             
-            }
+        //     }
             
-            alert(JSON.stringify({'ip':ipFyResponse,'info':IpInfos.data}))
-            setTargetPersonData(datas);
-            AskLocationPermision()
-        } catch (error) {
-            seterror(true)
-            console.error('issues:', error)
-            alert(JSON.stringify(error))
-        }
+            
+        //     setTargetPersonData(datas);
+        //     AskLocationPermision()
+        // } catch (error) {
+        //     seterror(true)
+        //     console.error('issues:', error)
+        //     alert(JSON.stringify(error))
+        // }
 
     }
     function AskLocationPermision() { 
@@ -159,8 +162,7 @@ export default function PreivewTarget() {
     }
     
     return(
-        <>
-        <h1>added</h1>
+        <> 
         {targetPersonData !== null ? 
             <div className={style.preview_section}>
                 <div className="container">
