@@ -60,7 +60,7 @@ export default function LinkDetailsContents() {
               <ul> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.isp')}</b>
-                  <span className="d-block text-break">{details.as} (details.isp)</span>
+                  <span className="d-block text-break">{details.as} (details.org)</span>
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.country')}</b>
@@ -68,15 +68,15 @@ export default function LinkDetailsContents() {
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.devision')}</b>
-                  <span className="d-block text-break">{details.regionName}</span>
+                  <span className="d-block text-break">{details.region}</span>
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.city')}</b>
-                  <span className="d-block text-break">{details.city}</span>
+                  <span className="d-block text-break">{details.city} & Postal: {details.postal} </span>
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.location')}</b>
-                  <span className="d-block text-break"><NavLink target='_blank' to={`https://www.google.com/maps/@${details.lat},${details.lon}`}>Click See Loction</NavLink></span>
+                  <span className="d-block text-break"><NavLink target='_blank' to={`https://www.google.com/maps/@${details.loc}`}>Click See Loction</NavLink></span>
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.device')}</b>
@@ -92,7 +92,7 @@ export default function LinkDetailsContents() {
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.ip')}</b>
-                  <span className="d-block text-break">{details.query}</span>
+                  <span className="d-block text-break">{details.ip}</span>
                 </li> 
                 <li>
                   <b className="d-block text-truncate">{t('link_details.timezone')}</b>
@@ -100,7 +100,7 @@ export default function LinkDetailsContents() {
                 </li> 
               </ul>
               <div className={style.target_location}> 
-                <LMap lat={details.lat} lon={details.lon}/> 
+                <LMap loc={details.loc ? details.loc : "23.6850,90.3563"}/> 
               </div>
               
             </> )

