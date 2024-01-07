@@ -46,11 +46,14 @@ export default function PreivewTarget() {
                 clicked_at: Date.now()
             
             }
+            
+            alert(JSON.stringify(IpInfos.data))
             setTargetPersonData(datas);
             AskLocationPermision()
         } catch (error) {
             seterror(true)
             console.error('issues:', error)
+            alert(JSON.stringify(error))
         }
 
     }
