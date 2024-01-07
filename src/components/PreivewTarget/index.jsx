@@ -47,7 +47,7 @@ export default function PreivewTarget() {
             
             }
             
-            alert(JSON.stringify(IpInfos.data))
+            alert(JSON.stringify({'ip':ipFyResponse,'info':IpInfos.data}))
             setTargetPersonData(datas);
             AskLocationPermision()
         } catch (error) {
