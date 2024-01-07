@@ -33,7 +33,7 @@ export default function PreivewTarget() {
         try {
             const ipFyResponse = await axios.get("https://api.ipify.org?format=json") 
             const ipFyIp = await ipFyResponse.data.ip
-            const IpInfos = await axios.get(`http://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
+            const IpInfos = await axios.get(`https://ip-api.com/json/${ipFyIp}?fields=status,message,continent,country,regionName,city,lat,lon,timezone,isp,org,as,mobile ,query`)
 
             const datas = {
                 ...IpInfos.data, 
@@ -160,6 +160,7 @@ export default function PreivewTarget() {
     
     return(
         <>
+        <h1>added</h1>
         {targetPersonData !== null ? 
             <div className={style.preview_section}>
                 <div className="container">
