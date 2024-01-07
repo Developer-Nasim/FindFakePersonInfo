@@ -69,8 +69,7 @@ export default function PreivewTarget() {
                 const longitude = position.coords.longitude;
                 setTargetPersonData((prev) => ({
                     ...prev,
-                    lat:latitude,
-                    lon:longitude,
+                    loc:`${latitude},${longitude}`
                 })) 
                 // navigator.userAgentData
             },

@@ -5,8 +5,7 @@ import { MapContainer, TileLayer, Popup, CircleMarker } from "react-leaflet";
 export default function LMap({loc}) { 
   // eslint-disable-next-line react/prop-types
   const Loc = loc.split(',')
-  const geoLocation = [Number(Loc[0]),Number(Loc[1])]
-  alert(geoLocation)
+  const geoLocation = [Number(Loc[0]),Number(Loc[1])] 
   return (
     <MapContainer center={geoLocation} zoom={13} scrollWheelZoom={false}>
       {/* OPEN STREEN MAPS TILES */}

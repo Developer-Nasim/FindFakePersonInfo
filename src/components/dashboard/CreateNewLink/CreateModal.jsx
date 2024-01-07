@@ -55,12 +55,13 @@ export default function CreateModal({closeHandle}) {
 
     const createLink = async (e) => {
         e.preventDefault()
+        
 
         const target = e.target
         target.classList.add('disabled')
 
         if (text.title.length > 0 && imgurl.length > 0) {
-            try { 
+            try {
                 const {uid} = curentUser
                 const db = getDatabase()
                 const linkRefs = await ref(db, `links/${uid}`)
