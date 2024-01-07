@@ -83,7 +83,10 @@ a.logo {
         margin-right: auto;
         text-align: center;
     }
-
+    .menu > button{
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
 
 
 
